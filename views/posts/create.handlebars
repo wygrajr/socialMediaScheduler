@@ -1,0 +1,20 @@
+{{#extends "layouts/main"}}
+
+{{#content "body"}}
+  <h2>Create Post</h2>
+  <form action="/posts/create" method="POST">
+    <div>
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" required></textarea>
+    </div>
+    <div>
+      <label for="scheduleDate">Schedule Date:</label>
+      <input type="date" id="scheduleDate" name="scheduleDate" required>
+    </div>
+    <div>
+      <label for="scheduleTime">Schedule Time:</label>
+      <input type="time" id="scheduleTime" name="scheduleTime" required>
+    </div>
+    <button type="submit">Create Post</button>
+  </form>
+{{/content}}
