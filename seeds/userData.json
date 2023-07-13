@@ -1,17 +1,27 @@
 [
   {
-    "name": "Sal",
-    "email": "sal@hotmail.com",
-    "password": "password12345"
+    "name": "Andrew",
+    "email": "andyalvarez11@github.com",
+    "password": "beanieToast1"
   },
   {
-    "name": "Lernantino",
-    "email": "lernantino@gmail.com",
-    "password": "password12345"
+    "name": "Jomathan",
+    "email": "jony277@github.com",
+    "password": "chicken4Life"
   },
   {
-    "name": "Amiko",
-    "email": "amiko2k20@aol.com",
-    "password": "password12345"
+    "name": "Latrell",
+    "email": "anferneepage@github.com",
+    "password": "authenticCode8"
+  },
+  {
+    "name": "William",
+    "email": "nettooffnook@github.com",
+    "password": "lights0ut"
+  },
+  {
+    "name": "Wycliffe",
+    "email": "wygrajr@github.com",
+    "password": "dbExpress5"
   }
 ]
