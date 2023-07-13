@@ -1,17 +1,17 @@
 [
   {
-    "name": "Music Near Me",
-    "description": "A mobile app that will send you notifications whenever a concert is playing in your area.",
-    "needed_funding": 5000
+    "title": "Weekend at the Beach",
+    "details": "Went to the beach last weekend with the fam and had a blast! Definitely too much sun :p",
+    "when_to_post": 5000
   },
   {
-    "name": "The Ultimate Tech Quiz",
-    "description": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
-    "needed_funding": 10000
+    "title": "Top 5 Tips for cooking Chicken",
+    "details": "Tip 1: Reheat your chicken in a pan with herbs before serving.Tip 2: Pour sauce around the chicken—not over it. Tip 3: Save the juices. Tip 4: Dredge your chicken in mustard and wine—not egg. Tip 5: Squeeze citrus over hot chicken right before serving.",
+    "when_to_post": 10000
   },
   {
-    "name": "Roll 'Em Up",
-    "description": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes.",
-    "needed_funding": 800
+    "title": "Minful Meditation",
+    "details": "If you are ever feeling stress or feel to bogged down with what's going on in life, take a moment and breath. Concentrate on your breathing and it will help alevate that stress and help you refocus!",
+    "when_to_post": 800
   }
 ]
