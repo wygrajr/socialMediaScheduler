@@ -1,54 +1,81 @@
 const bcrypt = require('bcrypt');
-const { User } = require('../models');
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
 
-module.exports = {
-  renderLogin: (req, res) => {
-    res.render('auth/login');
-  },
+const authController = {
+    register: async (req, res) => {
+        try {
+            // Extract data from the request body
+            const { name, email, password } = req.body;
 
-  renderRegister: (req, res) => {
-    res.render('auth/register');
-  },
+            // Perform validation on the input data
+            if (!name || !email || !password) {
+                return res.status(400).json({ error: 'Name, email, and password are required' });
+            }
 
-  login: async (req, res) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ where: { email } });
+            // Validate email format using a regular expression
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                return res.status(400).json({ error: 'Invalid email format' });
+            }
 
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
+            // Check if the user with the same email already exists
+            const existingUser = await User.findOne({ where: { email } });
+            if (existingUser) {
+                return res.status(409).json({ error: 'User with this email already exists' });
+            }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+            // Hash the password before storing it in the database
+            const hashedPassword = await bcrypt.hash(password, 10);
 
-    if (!isPasswordValid) {
-      return res.status(401).json({ error: 'Invalid password' });
-    }
+            // Create a new user and save it to the database
+            await User.create({ name, email, password: hashedPassword });
 
-    req.session.user = user;
-    res.redirect('/posts');
-  },
+            return res.status(201).json({ message: 'User registered successfully' });
+        } catch (err) {
+            console.error('Error registering user:', err);
+            return res.status(500).json({ error: 'Server error' });
+        }
+    },
 
-  register: async (req, res) => {
-    const { email, password } = req.body;
 
-    const existingUser = await User.findOne({ where: { email } });
-    if (existingUser) {
-      return res.status(409).json({ error: 'User already exists' });
-    }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    login: async (req, res) => {
+        try {
+            const { email, password } = req.body;
+            // Perform validation on the input data (e.g., check for required fields)
 
-    const newUser = await User.create({
-      email,
-      password: hashedPassword,
-    });
+            // Find the user with the provided email
+            const user = await User.findOne({ where: { email } });
+            if (!user) {
+                return res.status(404).json({ error: 'User not found' });
+            }
 
-    req.session.user = newUser;
-    res.redirect('/posts');
-  },
+            // Compare the provided password with the hashed password in the database
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+            if (!isPasswordValid) {
+                return res.status(401).json({ error: 'Invalid credentials' });
+            }
 
-  logout: (req, res) => {
-    req.session.destroy();
-    res.redirect('/auth/login');
-  },
+            // Generate a JWT token
+            const token = jwt.sign({ userId: user.id }, 'your_secret_key_here', {
+                expiresIn: '1h', // Token expires in 1 hour
+            });
+
+            return res.status(200).json({
+                message: 'Login successful',
+                user: {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                },
+                token,
+            });
+        } catch (err) {
+            console.error('Error logging in:', err);
+            return res.status(500).json({ error: 'Server error' });
+        }
+    },
 };
+
+module.exports = authController;
