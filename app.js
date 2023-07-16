@@ -1,30 +1,42 @@
 const express = require('express');
-const session = require('express-session');
-const handlebars = require('express-handlebars');
-const cookieParser = require('cookie-parser');
-const path = require('path');
-const routes = require('./routes');
-const config = require('./config/config');
+const sequelize = require('./config/config');
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-
-app.use(express.urlencoded({ extended: false }));
+// Middleware for parsing JSON in request bodies
 app.use(express.json());
-app.use(cookieParser());
-app.use(session({
-  secret: config.sessionSecret,
-  resave: false,
-  saveUninitialized: true,
-}));
 
-app.use(express.static(path.join(__dirname, 'public')));
+// Middleware for parsing URL-encoded data in request bodies
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/', routes);
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
-});
+// Set up your view engine (assuming you are using a templating engine like EJS)
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
+// Import and use your routes
+const authRoutes = require('./controllers/api/authRoutes');
+const postRoutes = require('./controllers/api/postRoutes');
+const socialMediaRoutes = require('./controllers/api/socialMediaRoutes');
+
+app.use('/api/auth', authRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/social-media', socialMediaRoutes);
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+
+// Sync the database and start the server
+sequelize
+  .sync()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server listening on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Error connecting to the database:', err);
+  });
+
