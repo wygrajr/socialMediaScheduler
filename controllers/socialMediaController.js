@@ -1,4 +1,4 @@
-// socialMediaController.js
+
 
 // Sample social media feed data for testing purposes
 const socialMediaFeed = [
@@ -10,8 +10,6 @@ const socialMediaFeed = [
   // Function to get the social media feed
   const getSocialMediaFeed = (req, res) => {
     try {
-      // In a real-world application, you might fetch the feed data from a database or external API
-      // For this example, we'll simply send the sample data defined above
       res.status(200).json(socialMediaFeed);
     } catch (err) {
       res.status(500).json({ error: 'Internal Server Error' });
@@ -21,10 +19,7 @@ const socialMediaFeed = [
   // Function to post new content to the social media feed
   const postSocialMedia = (req, res) => {
     try {
-      // In a real-world application, you would handle posting new content to the feed here
-      // You might save the new post to a database or send it to an external API
-  
-      // For this example, let's assume the request body contains the content of the new post
+      
       const { content } = req.body;
   
       // Generate a unique ID for the new post
