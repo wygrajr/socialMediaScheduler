@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
         },
       ],
     });
+    res.send('this is homepage')
 
     // Serialize data so the template can read it
     const projects = projectData.map((project) => project.get({ plain: true }));

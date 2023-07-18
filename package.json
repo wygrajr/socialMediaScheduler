@@ -6,6 +6,25 @@
     "handlebars": "^4.7.7",
     "jsonwebtoken": "^9.0.1",
     "mysql2": "^3.5.1",
+    "nodemon": "^3.0.1",
     "sequelize": "^6.32.1"
-  }
+  },
+  "name": "socialmediascheduler",
+  "description": "A scheduler to send out timed Social Media posts",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wygrajr/socialMediaScheduler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wygrajr/socialMediaScheduler/issues"
+  },
+  "homepage": "https://github.com/wygrajr/socialMediaScheduler#readme"
 }

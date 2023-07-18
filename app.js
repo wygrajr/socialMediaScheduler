@@ -20,7 +20,9 @@ app.set('view engine', 'ejs');
 const authRoutes = require('./controllers/api/authRoutes');
 const postRoutes = require('./controllers/api/postRoutes');
 const socialMediaRoutes = require('./controllers/api/socialMediaRoutes');
+const homeRoutes = require('./controllers/homeRoutes')
 
+app.use('/', homeRoutes) 
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/social-media', socialMediaRoutes);
