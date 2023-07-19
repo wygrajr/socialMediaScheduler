@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const nodemailer = require('nodemailer')
 
 const authController = {
     register: async (req, res) => {
@@ -105,29 +106,49 @@ const authController = {
                 return res.status(404).json({ error: 'User not found' });
             }
 
-            // Your reset password logic here.
-            // This function should handle the password reset process.
-            // For example, you may generate a reset token, send an email to the user,
-            // and then handle the password reset in a separate route/controller.
-
             // Generate a reset token (you can use any method to create a unique token)
             const resetToken = jwt.sign({ userId: user.id }, 'reset_secret_key_here', {
                 expiresIn: '1h', // Token expires in 1 hour
             });
 
-            // Send an email to the user with a link to the password reset page
-            // The link should include the resetToken as a query parameter or in the URL path.
+            // Save the reset token in the user's record in the database
+            await User.update({ resetToken }, { where: { id: user.id } });
 
-            // After the user clicks the link and verifies the resetToken,
-            // handle the password reset in a separate route/controller.
-            // Verify the token, ask the user for a new password, and then update it.
+            // Create a nodemailer transporter with your email service credentials
+            const transporter = nodemailer.createTransport({
+                service: 'Gmail', // Use your email service (e.g., 'Gmail', 'Outlook', 'Yahoo', etc.)
+                auth: {
+                    user: 'noreply.socialscheduler@gmail.com', // Replace with your email address
+                    pass: 'SocialScheduler10!', // Replace with your email password
+                },
+            });
 
-            return res.status(200).json({ message: 'Password reset link sent to your email' });
+            // Create the email content
+            const resetLink = `http://your_reset_password_url.com/reset/${resetToken}`;
+            const mailOptions = {
+                from: 'noreply.socialscheduler@gmail.com', // Replace with your email address
+                to: email,
+                subject: "Here's how to reset your password.", // Subject of the email
+                text: `Click on the link below to reset your password:\n${resetLink}`, // Text content of the email
+                html: `<p>Click on the link below to reset your password:</p><a href="${resetLink}">${resetLink}</a>`, // HTML content of the email
+            };
+
+            // Send the email
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.error('Error sending email:', error);
+                    return res.status(500).json({ error: 'Error sending email' });
+                }
+                console.log('Email sent:', info.response);
+                return res.status(200).json({ message: 'Password reset link sent to your email' });
+            });
+
         } catch (err) {
             console.error('Error resetting password:', err);
             return res.status(500).json({ error: 'Server error' });
         }
     },
+
 
     changePassword: async (req, res) => {
         try {
