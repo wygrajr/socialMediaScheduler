@@ -3,9 +3,11 @@
     "bcrypt": "^5.1.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "handlebars": "^4.7.7",
+    "express-handlebars": "^7.0.7",
+    "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.1",
     "mysql2": "^3.5.1",
+    "nodemailer": "^6.9.3",
     "nodemon": "^3.0.1",
     "sequelize": "^6.32.1"
   },
@@ -13,9 +15,10 @@
   "description": "A scheduler to send out timed Social Media posts",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
-    "dev": "node app.js"
+    "start": "node app.js",
+    "maildev": "maildev",
+    "dev": "concurrently \"npm run start\" \"npm run maildev\""
   },
   "repository": {
     "type": "git",
@@ -26,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/wygrajr/socialMediaScheduler/issues"
   },
-  "homepage": "https://github.com/wygrajr/socialMediaScheduler#readme"
+  "homepage": "https://github.com/wygrajr/socialMediaScheduler#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
 }
