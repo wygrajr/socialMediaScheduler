@@ -41,6 +41,10 @@ router.get('/Welcome', (req,res)=>{
   res.render('LoggedinHP')
 })
 
+router.get('/login', (req, res)=>{
+  res.render('login')
+})
+
 router.get('/project/:id', async (req, res) => {
   try {
     const projectData = await Project.findByPk(req.params.id, {
