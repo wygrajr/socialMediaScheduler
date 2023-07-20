@@ -5,8 +5,7 @@ module.exports = {
     try {
       // Fetch all posts from the database associated with the logged-in user
       const posts = await Post.findAll({ where: { userId: req.userId } });
-  
-      res.status(200).json(posts);
+      res.render('project').status(200).json(posts);
     } catch (err) {
       res.status(500).json({ error: 'Internal Server Error' });
     }

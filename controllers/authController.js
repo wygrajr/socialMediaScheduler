@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const nodemailer = require('nodemailer')
 const path = require('path');
-const generateSecretKey = require('../utils/secretKeyGenerator')
+const generateSecretKey = require('../utils/secretKeyGenerator');
+const withAuth = require('../utils/auth');
 const secretKey = generateSecretKey(32);
 
 const authController = {
@@ -36,8 +37,9 @@ const authController = {
             // Create a new user and save it to the database
             await User.create({ name, email, password: hashedPassword });
 
-            const filePath = path.join(__dirname, '../public/workflow.html');
-            return res.sendFile(filePath);
+            req.session.logged_in = true;
+
+            res.redirect('/Welcome', )
         } catch (err) {
             console.error('Error registering user:', err);
             return res.status(500).json({ error: 'Server error' });
@@ -76,13 +78,11 @@ const authController = {
                 expiresIn: '1h', // Token expires in 1 hour
             });
 
-            const filePath = path.join(__dirname, '../public/workflow.html');
-            return res.sendFile(filePath);
+            res.redirect('/')
         } catch (err) {
             console.error('Error logging in:', err);
             return res.status(500).json({ error: 'Server error' });
         }
-
     },
 
 

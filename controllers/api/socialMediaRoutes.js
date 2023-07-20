@@ -3,5 +3,8 @@ const { getSocialMediaFeed, postSocialMedia } = require('../../controllers/socia
 
 router.get('/feed', getSocialMediaFeed);
 router.post('/post', postSocialMedia);
+router.get('/', (req,res)=>{
+    res.render('createpost')
+});
 
 module.exports = router;

@@ -13,7 +13,9 @@ router.post('/login', authController.login);
 router.post('/logout',withAuth, authController.logout);
 
 // Route: POST /api/auth/reset-password
-router.post('/reset-password',withAuth, authController.resetPassword);
+router.post('/reset-password', authController.resetPassword);
+// Route: POST /api/auth/reset-password/:token
+router.post('/reset-password/:token', authController.resetPasswordToken);
 
 // Route: POST /api/auth/change-password
 router.post('/change-password',withAuth, authController.changePassword);

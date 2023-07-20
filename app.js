@@ -45,6 +45,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/social-media', socialMediaRoutes);
 
+
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 
