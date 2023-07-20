@@ -1,12 +1,6 @@
-{{#extends "layouts/main"}}
+{{> main-layout}}
 
-{{#content "body"}}
-  <div class="text-center">
-    <h2>{{name}}</h2>
-    <p>{{description}}</p>
-    <p>Created by {{user.name}} on {{format_date date_created}}</p>
-    <p>
-      <button class="btn btn-primary">Schedule Posts</button>
-    </p>
-  </div>
-{{/content}}
+<h1>{{project.name}}</h1>
+<p>{{project.description}}</p>
+<p>Created by: {{project.creator}}</p>
+<a href="/projects/{{project.id}}/schedule" class="btn">Schedule Posts</a>

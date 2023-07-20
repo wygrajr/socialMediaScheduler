@@ -1,9 +1,0 @@
-<h2>Posts</h2>
-{{#each posts}}
-  <p>{{this.content}}</p>
-{{/each}}
-
-<form action="/posts" method="POST">
-  <input type="text" name="content" placeholder="Enter post content" required>
-  <button type="submit">Create Post</button>
-</form>

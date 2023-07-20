@@ -1,13 +1,14 @@
-{{#extends "layouts/main"}}
+{{> main-layout}}
 
-{{#content "body"}}
-  <section class="hero">
-    <h1>Welcome to the Social Media Scheduler App!</h1>
-    <p>Effortlessly schedule and manage your social media posts.</p>
-    {{#if logged_in}}
-      <a href="/dashboard" class="btn">Get Started</a>
-    {{else}}
-      <a href="/auth/register" class="btn">Sign Up</a>
-    {{/if}}
-  </section>
-{{/content}}
+{{#if isAuthenticated}}
+  <h1>Welcome, {{user.name}}!</h1>
+  <p>Start scheduling your social media posts now.</p>
+  <a href="/projects" class="btn">Get Started</a>
+{{else}}
+  <h1>Welcome to our Social Media Scheduler!</h1>
+  <p>Create an account to start scheduling and managing your social media posts.</p>
+  <div class="buttons">
+    <a href="/register" class="btn">Sign Up</a>
+    <a href="/login" class="btn btn-secondary">Login</a>
+  </div>
+{{/if}}
