@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Social Media Scheduler</title>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <header>
-    <h1>Social Media Scheduler</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/social-media">Social Media</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
-    {{#content "body"}}
-      <!-- Default body content -->
-    {{/content}}
+    {{{body}}}
   </main>
 
   <footer>
     <p>&copy; 2023 Social Media Scheduler. All rights reserved.</p>
   </footer>
-
-  <script src="/js/main.js"></script>
 </body>
 </html>
