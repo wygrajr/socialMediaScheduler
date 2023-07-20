@@ -9,7 +9,7 @@
 
 ## 1. Description
 
-### This is a social media scheduler built using Javascript
+### This is a social media scheduler built using Javascript.
 
 This is a social media scheduler that allows you to pick your platform, set a date and time, as well as add attatchments for your post.
 
@@ -19,7 +19,7 @@ This is a social media scheduler that allows you to pick your platform, set a da
 
 ## 2. Web Address
 
-tbd
+file:///C:/Users/Yato/Documents/bootcamp/socialMediaScheduler-main/andrew/workflow.html
 
 <a name="repoadd"></a>
 
@@ -33,5 +33,6 @@ Collaborators:
  - https://github.com/patricketienne777
  - https://github.com/ptookey
  - https://github.com/Tehila03
+ - https://github.com/Nettooffnook
  - https://github.com/andyalvarez11
  - https://github.com/wygrajr
