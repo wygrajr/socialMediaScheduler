@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" href="assets/images/Logo.png" type="image/icon type">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="headTop">
+        <div id="logoTitle">
+            <img id="logo" src="assets/images/logo.png">
+            <h1>Social Scheduler</h1>
+        </div>
+    </header>
+
+    <div id="scheduler">
+        <aside id="input">
+            <form id="search-form">
+                <div class="file">
+                    <label class="file-label">
+                      <input class="file-input" type="file" name="resume">
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Choose a post…
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                <!-- <label for="input-name">Select Post</label>
+                <input class="input is-focused" type="text" placeholder="Upload post" id="input-name"><br> -->
+                <label for="input-type">Platform</label>
+                <select id="input-type">
+                    <option value="Other" disabled selected>Select Social</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="Instagram" disabled>Instagram</option>
+                    <option value="Threads" disabled>Threads</option>
+                    <option value="Facebook" disabled>Facebook</option>
+                    <option value="Linkedin" disabled>Linkedin</option>
+                </select><br>
+                <label for="frequency">Schedule</label>
+                <br>
+                <select id="frequency">
+                    <option value="" disabled selected>Frequency</option>
+                    <option value="daily" disabled>Daily</option>
+                    <option value="everyOtherDay" disabled>Every other day</option>
+                    <option value="weekly" disabled>Weekly</option>
+                </select>
+                <br>
+                <label for="select-end">End Schedule</label>
+                <br>
+                <select id="select-end">
+                    <option value="" disabled selected>Select Date</option>
+                    <option value="30" disabled>30</option>
+                </select>
+                <button id="inputButton">Post</button>
+            </form>
+            <div id="spacer"></div>
+        </aside>
+        <main id="handles">
+            <nav id="main-nav">
+                <button id="all" value="all">
+                    All
+                </button>
+                <!-- <button> -->
+                <button id="twitter" value='twitter'>
+                    Twitter
+                    <!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+                </button>
+                <button id="instagram" value="instagram">
+                    Instagram
+                </button>
+                <button id="threads" value="threads">
+                    Threads
+                </button>
+                <button id="facebook" value="facebook">
+                    Facebook
+                </button>
+                <button id="linkedin" value="linkedin">
+                    Linkedin
+                </button>
+            </nav>
+            
+            <div id="workflow">
+                <div id="timeslots">
+                    <div class="spacer"></div>
+                    
+                    <div id="calender">
+                        <div class="month">
+                            <ul>
+                                <li class="prev">&#10094;</li>
+                                <li class="next">&#10095;</li>
+                                <li>
+                                    July<br>
+                                    <span style="font-size:18px">2023</span>
+                                </li>
+                            </ul>
+                        </div>
+        
+                        <ul class="weekdays">
+                            <li>Su</li>
+                            <li>Mo</li>
+                            <li>Tu</li>
+                            <li>We</li>
+                            <li>Th</li>
+                            <li>Fr</li>
+                            <li>Sa</li>
+                        </ul>
+        
+                        <ul class="days">
+                            <li></li>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                            <li>6</li>
+                            <li>7</li>
+                            <li>8</li>
+                            <li>9</li>
+                            <li>10</li>
+                            <li>11</li>
+                            <li>12</li>
+                            <li>13</li>
+                            <li>14</li>
+                            <li>15</li>
+                            <li>16</li>
+                            <li>17</li>
+                            <li><span class="active">18</span></li>
+                            <li>19</li>
+                            <li>20</li>
+                            <li>21</li>
+                            <li>22</li>
+                            <li>23</li>
+                            <li>24</li>
+                            <li>25</li>
+                            <li>26</li>
+                            <li>27</li>
+                            <li>28</li>
+                            <li>29</li>
+                            <li>30</li>
+                            <li>31</li>
+                        </ul>
+                    </div>
+        
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+    <script 
+    src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"
+    ></script>
+    <img style="display: inline-block none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="" id="icon">
+    <script src="assets/script.js"></script>
+</body>
+
+</html>

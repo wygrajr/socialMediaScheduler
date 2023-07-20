@@ -3,6 +3,7 @@ const { Post } = require('../models');
 module.exports = {
   getAllPosts: async (req, res) => {
     try {
+      res.send('successful')
       // Fetch all posts from the database
       const posts = await Post.findAll();
 
@@ -67,6 +68,4 @@ module.exports = {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   },
-
-  // Other postController functions here...
 };
