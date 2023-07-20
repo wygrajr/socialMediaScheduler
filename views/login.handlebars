@@ -1,42 +1,17 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
+{{> main-layout}}
 
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
+<h2>Login</h2>
+<form action="/auth/login" method="POST">
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
   </div>
-  <div class="col-md-6">
-    <h2>Signup</h2>
-
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
   </div>
-</div>
-
-<script src="./js/login.js"></script>
+  <div class="forgot-password-link">
+    <a href="/auth/reset-password/request">Forgot Password?</a>
+  </div>
+  <button type="submit" class="btn">Login</button>
+</form>
