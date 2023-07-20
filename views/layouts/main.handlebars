@@ -5,17 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fund My Project!</title>
+  <link rel="stylesheet" href="../../public/assets/styles.css">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  
 </head>
 
 <body>
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
-      </h1>
+    <header id="headTop">
+        <div id="logoTitle">
+            <img id="logo" src="../../public/assets/images/logo.png">
+            <h1>Social Scheduler</h1>
+        </div>
+    </header>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}

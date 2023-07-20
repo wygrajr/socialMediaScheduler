@@ -1,17 +1,17 @@
 const { Post } = require('../models');
 
 module.exports = {
-  getAllPosts: async (req, res) => {
+  getAllPosts :async (req, res) => {
     try {
-      res.send('successful')
-      // Fetch all posts from the database
-      const posts = await Post.findAll();
-
+      // Fetch all posts from the database associated with the logged-in user
+      const posts = await Post.findAll({ where: { userId: req.userId } });
+  
       res.status(200).json(posts);
     } catch (err) {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   },
+  
 
   createPost: async (req, res) => {
     try {

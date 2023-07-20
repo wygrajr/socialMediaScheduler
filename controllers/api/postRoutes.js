@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const postController = require('../../controllers/postController');
+const withAuth = require('../../utils/auth');
 
 // Route: GET /api/posts
-router.get('/', postController.getAllPosts);
+router.get('/', withAuth, postController.getAllPosts);
 
 // Route: POST /api/posts
 router.post('/', postController.createPost);

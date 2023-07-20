@@ -2,6 +2,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const nodemailer = require('nodemailer')
+const path = require('path');
+const generateSecretKey = require('../utils/secretKeyGenerator')
+const secretKey = generateSecretKey(32);
 
 const authController = {
     register: async (req, res) => {
@@ -28,11 +31,13 @@ const authController = {
 
             // Hash the password before storing it in the database
             const hashedPassword = await bcrypt.hash(password, 10);
+            console.log(hashedPassword)
 
             // Create a new user and save it to the database
             await User.create({ name, email, password: hashedPassword });
 
-            return res.status(201).json({ message: 'User registered successfully' });
+            const filePath = path.join(__dirname, '../public/workflow.html');
+            return res.sendFile(filePath);
         } catch (err) {
             console.error('Error registering user:', err);
             return res.status(500).json({ error: 'Server error' });
@@ -44,52 +49,50 @@ const authController = {
     login: async (req, res) => {
         try {
             const { email, password } = req.body;
-            // Perform validation on the input data (e.g., check for required fields)
 
-            // Check if the 'email' field is missing or empty
-            if (!email) {
-                return res.status(400).json({ error: 'Email is required' });
+            // Perform validation on the input data (e.g., check for required fields)
+            if (!email || !password) {
+                return res.status(400).json({ error: 'Email and password are required' });
             }
 
             // Find the user with the provided email
-            const user = await User.findOne({ where: { email } });
+            const user = await User.findOne({ where: { email }});
             if (!user) {
                 return res.status(404).json({ error: 'User not found' });
             }
 
             // Compare the provided password with the hashed password in the database
             const isPasswordValid = await bcrypt.compare(password, user.password);
+            console.log(user.password)
             if (!isPasswordValid) {
                 return res.status(401).json({ error: 'Invalid credentials' });
             }
 
+            // Set the session indicating the user is logged in
+            req.session.logged_in = true;
+
             // Generate a JWT token
-            const token = jwt.sign({ userId: user.id }, 'your_secret_key_here', {
+            const token = jwt.sign({ userId: user.id }, secretKey, {
                 expiresIn: '1h', // Token expires in 1 hour
             });
 
-            return res.status(200).json({
-                message: 'Login successful',
-                user: {
-                    id: user.id,
-                    name: user.name,
-                    email: user.email,
-                },
-                token,
-            });
+            const filePath = path.join(__dirname, '../public/workflow.html');
+            return res.sendFile(filePath);
         } catch (err) {
             console.error('Error logging in:', err);
             return res.status(500).json({ error: 'Server error' });
         }
+
     },
 
 
     logout: (req, res) => {
         try {
-            // For logout, if you are using JWT, there's not much server-side work required.
-            // The JWT token is stored on the client-side, so you just need to clear it from the client.
-            // On the client-side, clear the token (e.g., from localStorage or cookies) after calling this route.
-            return res.status(200).json({ message: 'Logout successful' });
+            // On the server-side, clear the session and set logged_in to false
+            req.session.destroy(() => {
+                req.session.logged_in = false;
+                return res.status(200).json({ message: 'Logout successful' });
+            });
         } catch (err) {
             console.error('Error logging out:', err);
             return res.status(500).json({ error: 'Server error' });
@@ -105,9 +108,9 @@ const authController = {
             if (!user) {
                 return res.status(404).json({ error: 'User not found' });
             }
-
+            const resetSecretKey = generateSecretKey(32);
             // Generate a reset token (you can use any method to create a unique token)
-            const resetToken = jwt.sign({ userId: user.id }, 'reset_secret_key_here', {
+            const resetToken = jwt.sign({ userId: user.id }, resetSecretKey, {
                 expiresIn: '1h', // Token expires in 1 hour
             });
 
@@ -142,11 +145,38 @@ const authController = {
                 console.log('Email sent:', info.response);
                 return res.status(200).json({ message: 'Password reset link sent to your email' });
             });
-
         } catch (err) {
             console.error('Error resetting password:', err);
             return res.status(500).json({ error: 'Server error' });
         }
+    },
+
+    resetPasswordToken: async (req, res) => {
+        try {
+            const { token } = req.params;
+            const { password } = req.body;
+
+            // Verify the reset token and find the user associated with it
+            const user = await User.findOne({ where: { resetToken: token } });
+            if (!user) {
+                return res.status(404).json({ error: 'Invalid or expired reset token' });
+            }
+
+            // Update the user's password with the new one provided
+            user.password = password;
+            user.resetToken = null; // Clear the reset token after using it
+            await user.save();
+
+            return res.status(200).json({ message: 'Password reset successfully' });
+        } catch (err) {
+            console.error('Error resetting password:', err);
+            return res.status(500).json({ error: 'Server error' });
+        }
+    },
+
+    renderResetPasswordPage: (req, res) => {
+
+        res.render('reset-password');
     },
 
 
