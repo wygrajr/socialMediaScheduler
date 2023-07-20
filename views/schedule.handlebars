@@ -1,0 +1,8 @@
+{{> main-layout}}
+
+<h1>Schedule Posts</h1>
+<form action="/projects/{{project.id}}/schedule" method="POST">
+  <label for="content">Post Content:</label>
+  <textarea id="content" name="content" required></textarea>
+  <button type="submit" class="btn">Schedule</button>
+</form>
