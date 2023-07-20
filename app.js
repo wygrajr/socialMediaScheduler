@@ -1,3 +1,4 @@
+const generateSecretKey = require('./utils/secretKeyGenerator');
 const express = require('express');
 const sequelize = require('./config/config');
 const session = require('express-session')
@@ -5,6 +6,7 @@ const exphbs = require('express-handlebars');
 
 
 const app = express();
+const hbs = exphbs.create()
 
 // Middleware for parsing JSON in request bodies
 app.use(express.json());
@@ -17,18 +19,15 @@ app.use(express.static('public'));
 
 app.engine(
   'handlebars',
-  exphbs({
-    defaultLayout: 'main', // This is the name of your main layout file (main.handlebars)
-    layoutsDir: __dirname + '/views/layouts', // Directory where your layouts are located
-  })
+ hbs.engine
 );
 app.set('views', './views');
 app.set('view engine', 'handlebars');
-
+const secretKey = generateSecretKey(32)
 // Add express-session middleware
 app.use(
   session({
-    secret: 'your_secret_key_here', // Replace with a secret key to sign the session ID
+    secret: secretKey, // Replace with a secret key to sign the session ID
     resave: false,
     saveUninitialized: true,
     // Additional options and configurations if needed...

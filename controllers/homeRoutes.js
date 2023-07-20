@@ -1,8 +1,10 @@
 const router = require('express').Router();
+const { writeHeapSnapshot } = require('v8');
 const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
+const path = require('path');
 
-router.get('/', async (req, res) => {
+router.get('/',withAuth, async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const projectData = await Project.findAll({
@@ -13,17 +15,17 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-    res.send('this is homepage')
-
     // Serialize data so the template can read it
     const projects = projectData.map((project) => project.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      projects, 
-      logged_in: req.session.logged_in 
-    });
-  } catch (err) {
+    const filePath = path.join(__dirname, '../public/workflow.html');
+    res.sendFile(filePath);
+    // // Pass serialized data and session flag into template
+    // res.render('main', { 
+    //   projects, 
+    //   logged_in: req.session.logged_in 
+    // });
+  }
+  catch (err) {
     res.status(500).json(err);
   }
 });
