@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-md-6">
     <h2>Login</h2>
@@ -41,3 +42,22 @@
 </div>
 
 <script src="./js/login.js"></script>
+
+{{> main-layout}}
+
+<h2>Login</h2>
+<form action="/auth/login" method="POST">
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+  </div>
+  <div class="forgot-password-link">
+    <a href="/auth/reset-password/request">Forgot Password?</a>
+  </div>
+  <button type="submit" class="btn">Login</button>
+</form>
+

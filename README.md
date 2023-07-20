@@ -1,8 +1,9 @@
-## Project 1: Day to Day Calendar
+## Project 2: Social Media Scheduler
 
 1. [ Description. ](#desc)
 2. [ Web Address. ](#webadd)
 3. [ Repository Address. ](#repoadd)
+4. [Credits](#credits)
 
 <a name="desc"></a>
 
@@ -22,6 +23,15 @@ tbd
 
 <a name="repoadd"></a>
 
-## Repository Address
+## 3. Repository Address
 
 https://github.com/wygrajr/socialMediaScheduler
+
+## 4. Credits
+
+Collaborators:
+ - https://github.com/patricketienne777
+ - https://github.com/ptookey
+ - https://github.com/Tehila03
+ - https://github.com/andyalvarez11
+ - https://github.com/wygrajr

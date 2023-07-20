@@ -1,4 +1,5 @@
 const withAuth = (req, res, next) => {
+
   // If the session indicates that the user is logged in, allow the request to continue
   if (req.session.logged_in) {
     return next();
