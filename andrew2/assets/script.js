@@ -9,9 +9,14 @@ console.log(tweetLink);
 // this is for clicking social handles to populate login and post material
 
 const generateBtn = document.querySelector("#twitter");
+// const generateBtns = document.querySelector("#inputButton");
 
 function showTwitter () {
-
+    document.getElementById('twitterPop').innerHTML = "I am Twitter";
 }
+// function showPost () {
+//     document.getElementById('twitterPop').innerHTML = "I am Twitter";
+// }
 
 generateBtn.addEventListener("click", showTwitter);
+// generateBtns.addEventListener("click", showPost);

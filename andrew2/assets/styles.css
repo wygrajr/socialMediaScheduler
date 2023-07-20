@@ -8,7 +8,6 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    /* font-family: Noto Sans JP, Roboto Condensed, sans-serif; */
     font-family: 'Noto Sans JP', sans-serif;
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -39,7 +38,6 @@ header {
 }
 
 header h1 {
-  /* font-family: Noto Sans JP, Roboto CondenseD, sans-serif; */
   font-family: 'Noto Sans JP', sans-serif;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 52px;
@@ -49,6 +47,21 @@ header h1 {
 }
 
 /*This is for the full page content*/
+
+button {
+  transition-duration: 0.4s;
+  border-radius: 8px; 
+}
+
+button:hover {
+  background-color: var(--gold);
+  color: white; 
+}
+
+button:focus {
+  background-color: var(--gold);
+  color: white; 
+}
 
 html{
     height: 100%;
@@ -72,7 +85,6 @@ aside{
     color: var(--black);
     background-color: var(--grey);
     overflow: auto;
-    /* padding-top: 50px; */
 }
 
 form{
@@ -95,8 +107,9 @@ select, input{
 }
 
 
-#input-start-ampm, #input-end-ampm {
-    width: 26%;
+#choose {
+    display: flex;
+    text-align: right;
 }
 
 #inputButton{
@@ -135,7 +148,6 @@ main{
     color: white;
     border: none;
     border-radius: 10px;
-    /* border-bottom-left-radius: 0px; */
     border-bottom-right-radius: 0px;
     margin: 10px;
     margin-top: 20px;
@@ -185,49 +197,30 @@ main{
 }
 
 
-/* Hide the browser's default checkbox */
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+/*This is for the columns for previous and future posts*/
+
+.scrollable-container {
+  width: 200px;
+  height: 200px;
+  overflow: auto;
 }
 
-
-
-/* this is for the socials login */
-
-
-/*This is for the calendar*/
-
-ul {list-style-type: none;}
-body {font-family: Verdana, sans-serif;}
-
-/*This is for the months*/
-
-.month {
+.column1 {
+  font-size: 20px;
   border-radius: 15px;
-  padding: 30px 25px;
-  width: 100%;
-  background: var(--black);
+  padding: 10px;
+  width: 50%;
+  background: var(--grey);
   text-align: center;
 }
-
-.month li, .month span {
-    background-color: var(--black);
-}
-
-.month ul {
-  margin: 0;
-  padding: 0;
-}
-
-.month ul li {
-  color: white;
+.column2 {
   font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+  color: white;
+  border-radius: 15px;
+  padding: 10px;
+  width: 50%;
+  background: var(--gold);
+  text-align: center;
 }
 
 .month .prev {
@@ -240,47 +233,15 @@ body {font-family: Verdana, sans-serif;}
   padding-top: 10px;
 }
 
-/*This is for the weekdays*/
 
-.weekdays {
-  margin: 0;
-  padding: 10px 0;
-  background-color: #d9dddd;
-  display: flex;
-}
+/* this is for the twitter populate */
 
-.weekdays li {
-  display: inline-block;
-  flex: 1;
-  color: #666;
-  background: none;
-  height: 100%;
-  text-align: center;
-}
+#twitterPop {
+    border-radius: 15px;
+    padding: 30px 25px;
+    width: 100%;
+    background: var(--grey);
+    text-align: center;
+  }
 
-/*This is for the days*/
-
-.days {
-  border-radius: 15px;
-  padding: 10px 0;
-  background: #eee;
-  margin: 0;
-}
-
-.days li {
-  list-style-type: none;
-  display: inline-block;
-  background: none;
-  width: 13%;
-  text-align: center;
-  margin-bottom: 5px;
-  font-size:12px;
-  color: #777;
-}
-
-.days li .active {
-  padding: 5px;
-  background: var(--black);
-  color: white !important
-}
 
