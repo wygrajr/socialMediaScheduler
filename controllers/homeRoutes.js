@@ -4,7 +4,7 @@ const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
 const path = require('path');
 
-router.get('/',withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const projectData = await Project.findAll({
@@ -17,18 +17,29 @@ router.get('/',withAuth, async (req, res) => {
     });
     // Serialize data so the template can read it
     const projects = projectData.map((project) => project.get({ plain: true }));
-    const filePath = path.join(__dirname, '../public/workflow.html');
-    res.sendFile(filePath);
+    
     // // Pass serialized data and session flag into template
-    // res.render('main', { 
-    //   projects, 
-    //   logged_in: req.session.logged_in 
-    // });
+    res.render('homepage', { 
+      projects, 
+      logged_in: req.session.logged_in 
+    });
   }
   catch (err) {
     res.status(500).json(err);
   }
 });
+
+router.get('/views/resetPasswordRequest', (req, res) => {
+  res.render('resetPasswordRequest');
+});
+
+router.get('/views/register', (req,res)=>{
+  res.render('register')
+});
+
+router.get('/Welcome', (req,res)=>{
+  res.render('LoggedinHP')
+})
 
 router.get('/project/:id', async (req, res) => {
   try {
