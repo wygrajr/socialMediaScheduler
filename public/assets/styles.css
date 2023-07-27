@@ -1,0 +1,373 @@
+:root {
+  --black: #302f2f;
+  --grey: #e8eeee;
+  --gold: #aa9518;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+header {
+  background-color: var(--black);
+  color: var(--gold);
+  position: relative;
+  padding: 10px;
+}
+
+#headTop {
+  display: flex;
+}
+
+#logoTitle {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+#logoTitle #logo {
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 60px;
+  width: 60px;
+}
+
+header h1 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 52px;
+  padding: 10px;
+  padding-left: 20px;
+  line-height: normal;
+}
+
+/*This is for the full page content*/
+
+button {
+  transition-duration: 0.4s;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: var(--gold);
+  color: white;
+}
+
+button:focus {
+  background-color: var(--gold);
+  color: white;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+}
+
+#scheduler {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/*This is for the aside*/
+
+aside {
+  flex: 20%;
+  color: var(--black);
+  background-color: var(--grey);
+  overflow: auto;
+}
+
+form {
+  margin: 10px;
+  margin-top: 20px;
+  padding-top: 50px;
+}
+
+select,
+input {
+  background-color: #fff;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#frequency,
+#select-end {
+  width: 100%;
+}
+
+
+#choose {
+  display: flex;
+  text-align: right;
+}
+
+#inputButton {
+  background-color: var(--gold);
+  color: white;
+  width: 100%;
+  margin: auto;
+  border: none;
+  border-radius: 30px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#spacer {
+  background: none;
+  height: 225px;
+}
+
+/*This is for the main page*/
+
+main {
+  flex: 80%;
+  background-color: var(--grey);
+  height: 100%;
+}
+
+#main-nav {
+  display: flex;
+  padding-bottom: 0px;
+  background-color: var(--grey);
+  padding-left: 10px;
+}
+
+#main-nav button {
+  background-color: var(--black);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  border-bottom-right-radius: 0px;
+  margin: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  flex: 1;
+  cursor: pointer;
+}
+
+#main-nav #all {
+  background-color: var(--black);
+}
+
+#main-nav #twitter {
+  background-color: var(--gold);
+}
+
+#main-nav #instagram {
+  background-color: var(--black);
+}
+
+#main-nav #threads {
+  background-color: var(--black);
+}
+
+#main-nav #facebook {
+  background-color: var(--black);
+}
+
+#main-nav #linkedin {
+  background-color: var(--black);
+}
+
+/*This is for the socials area*/
+
+#workflow {
+  height: 100%;
+  background-color: #d9dddd;
+  border-top-left-radius: 15px;
+  padding: 20px;
+  overflow: auto;
+}
+
+
+.spacer {
+  height: 170px;
+}
+
+
+/*This is for the columns for previous and future posts*/
+
+.scrollable-container {
+  width: 200px;
+  height: 200px;
+  overflow: auto;
+}
+
+.column1 {
+  font-size: 20px;
+  border-radius: 15px;
+  padding: 10px;
+  width: 50%;
+  background: var(--grey);
+  text-align: center;
+}
+
+.column2 {
+  font-size: 20px;
+  color: white;
+  border-radius: 15px;
+  padding: 10px;
+  width: 50%;
+  background: var(--gold);
+  text-align: center;
+}
+
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+
+/* this is for the twitter populate */
+
+#twitterPop {
+  border-radius: 15px;
+  padding: 30px 25px;
+  width: 100%;
+  background: var(--grey);
+  text-align: center;
+}
+
+/* Custom CSS to define the colors and center the form */
+
+.is-gold {
+  color: #aa9518;
+  border-color: #aa9518;
+}
+
+.is-gold-bg {
+  background-color: #aa9518;
+}
+
+.has-text-black {
+  color: #302f2f;
+}
+
+/* Center the form within the column */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Adjust the width of the form */
+.is-three-fifths {
+  width: 60%;
+}
+
+/* Style the login button */
+.button.is-black {
+  background-color: #302f2f;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.custom-box1 {
+  background-color: white;
+  /* Set background color to white */
+  border: none;
+  /* Remove border */
+  padding: 20px;
+  /* Add padding for some space inside the box */
+}
+
+/* Styles for the custom title */
+.custom-title1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Styles for the form fields */
+.field1 {
+  margin-bottom: 10px;
+}
+
+.custom-label1 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.custom-input1 {
+  padding: 8px;
+  border: 1px solid #ccc;
+  /* Add a light gray border */
+  border-radius: 4px;
+  width: 100%;
+  /* Make the input box width 100% of its container */
+}
+
+/* Styles for the submit button */
+.custom-button1 {
+  background-color: #aa9518;
+  /* Use the gold color for the button background */
+  color: white;
+  /* Set text color to white */
+  border: none;
+  /* Remove the button border */
+  padding: 10px 20px;
+  /* Add some padding around the button text */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  /* Add a smooth transition effect for the background color */
+}
+
+.custom-button1:hover {
+  background-color: #937f15;
+  /* Change the background color on hover */
+}
+
+.inactive-button {
+  background-color: white;
+  color: black;
+}
+
+.active-button {
+  background-color: gold;
+  color: white;
+}
+
+.post-container{
+  margin-top: 5%;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.postbutton{
+  width: 100%;
+  height: 100%;
+}
+
+.post-block{
+  width: 80%;
+  height: 20%;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.485);
+}

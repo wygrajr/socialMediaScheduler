@@ -4,7 +4,7 @@ const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
 const path = require('path');
 
-router.get('/', async (req, res) => {
+router.get('/',withAuth, async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const projectData = await Project.findAll({
@@ -29,11 +29,11 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/views/resetPasswordRequest', (req, res) => {
+router.get('/resetPasswordRequest', (req, res) => {
   res.render('resetPasswordRequest');
 });
 
-router.get('/views/register', (req,res)=>{
+router.get('/register', (req,res)=>{
   res.render('register')
 });
 
@@ -43,6 +43,10 @@ router.get('/Welcome', (req,res)=>{
 
 router.get('/login', (req, res)=>{
   res.render('login')
+})
+
+router.get('/socialMedia', (req, res)=>{
+  res.render('socialMedia')
 })
 
 router.get('/project/:id', async (req, res) => {
@@ -90,7 +94,7 @@ router.get('/profile', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/');
     return;
   }
 

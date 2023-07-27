@@ -1,0 +1,1 @@
+// Create a event listener on the submit button that sends the password to the backend //

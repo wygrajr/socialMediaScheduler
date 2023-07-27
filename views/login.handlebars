@@ -1,18 +1,55 @@
-{{ main-layout}}
+<!DOCTYPE html>
+<html>
 
-<h2>Login</h2>
-<form action="api/auth/login" method="POST">
-  <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-  </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-  </div>
-  <div class="forgot-password-link">
-    <p>Don't have an account? <a href="/views/register">Register</a></p>
-    <p>Forgot your password? <a href="/views/resetPasswordRequest">Reset Password</a></p>
-  </div>
-  <button type="submit" class="btn">Login</button>
-</form>
+<head>
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="icon" href="/assets/images/logo.png" type="image/icon type">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto+Condensed&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  {{> header}}
+
+
+  <section class="section">
+    <div class="container">
+      <div style="display: width: 100%">
+        <div>
+          <form action="api/auth/login" method="POST" class="login-form">
+            <div class="field">
+              <label for="email" class="label has-text-black">Email:</label>
+              <div class="control">
+                <input type="email" id="email" name="email" class="input is-gold" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="password" class="label has-text-black">Password:</label>
+              <div class="control">
+                <input type="password" id="password" name="password" class="input is-gold" required>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control forgot-password-link">
+                <p>Forgot your password? <a href="/resetPasswordRequest" class="has-text-gold">Reset Password</a></p>
+                <p>Don't have an account? <a href="/register" class="has-text-gold">Register</a></p>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-black has-text-white is-fullwidth">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="/assets/login.js"></script>
+</body>

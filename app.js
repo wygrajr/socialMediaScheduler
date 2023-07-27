@@ -3,10 +3,15 @@ const express = require('express');
 const sequelize = require('./config/config');
 const session = require('express-session')
 const exphbs = require('express-handlebars');
+const path = require('path');
+
 
 
 const app = express();
-const hbs = exphbs.create()
+const hbs = exphbs.create({
+  partialsDir: path.join(__dirname, 'views', 'partials'),
+  defaultLayout: false
+});
 
 // Middleware for parsing JSON in request bodies
 app.use(express.json());
@@ -15,7 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from the 'public' directory
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.engine(
   'handlebars',
@@ -48,7 +54,7 @@ app.use('/api/social-media', socialMediaRoutes);
 
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // Sync the database and start the server
 sequelize

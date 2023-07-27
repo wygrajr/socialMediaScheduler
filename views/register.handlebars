@@ -1,12 +1,58 @@
-{{ main-layout}}
+<!DOCTYPE html>
+<html>
 
-<h1>Register</h1>
-<form action="/api/auth/register" method="POST">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required>
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required>
-  <button type="submit" class="btn">Register</button>
-</form>
+<head>
+  <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="icon" href="/assets/images/logo.png" type="image/icon type">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto+Condensed&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  {{> header}}
+<section >
+  <div >
+    <div class="columns is-centered" >
+      <div class="column is-half" style="background-color: white;">
+        <div class="custom-box1">
+          <h1 class="custom-title1">Register</h1>
+          <form action="/api/auth/register" method="POST">
+            <div class="field1">
+              <label for="name" class="custom-label1">Name:</label>
+              <div class="control1">
+                <input type="text" id="name" name="name" class="custom-input1" required>
+              </div>
+            </div>
+            <div class="field1">
+              <label for="email" class="custom-label1">Email:</label>
+              <div class="control1">
+                <input type="email" id="email" name="email" class="custom-input1" required>
+              </div>
+            </div>
+            <div class="field1">
+              <label for="password" class="custom-label1">Password:</label>
+              <div class="control1">
+                <input type="password" id="password" name="password" class="custom-input1" required>
+              </div>
+            </div>
+            <div class="field1">
+              <div class="control1 has-text-centered1">
+                <button type="submit" class="custom-button1">Register</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+
+
