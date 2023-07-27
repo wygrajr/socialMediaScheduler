@@ -1,49 +1,58 @@
-const { Post } = require('../models');
+const { Project } = require('../models');
+const express = require('express');
+const router = express.Router();
+
 
 module.exports = {
-  getAllPosts :async (req, res) => {
+  getAllPosts: async (req, res) => {
     try {
-      // Fetch all posts from the database associated with the logged-in user
-      const posts = await Post.findAll({ where: { userId: req.userId } });
-      res.render('project').status(200).json(posts);
+      // Fetch all projects from the database associated with the logged-in user
+      const projects = await Project.findAll({ where: { user_id: req.userId } });
+      res.status(200).json(projects);
     } catch (err) {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   },
-  
 
   createPost: async (req, res) => {
     try {
-      // Extract post data from the request body
-      const { title, content } = req.body;
+      // Extract project data from the request body
+      const { title, description, platform, date } = req.body;
 
-      // Create a new post in the database
-      const newPost = await Post.create({ title, content });
+      // Create a new project in the database
+      const newProject = await Project.create({
+        name: title, // You might want to change this property name if needed
+        description,
+        date_created: date,
+        user_id: req.userId,
+      });
 
-      res.status(201).json(newPost);
+      res.status(201).json(newProject);
     } catch (err) {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   },
 
+
   updatePost: async (req, res) => {
     try {
-      // Extract post data from the request body
-      const { title, content } = req.body;
+      // Extract project data from the request body
+      const { name, description, needed_funding } = req.body;
 
-      // Find the post by its ID in the database
-      const postId = req.params.postId;
-      const post = await Post.findByPk(postId);
+      // Find the project by its ID in the database
+      const projectId = req.params.projectId;
+      const project = await Project.findByPk(projectId);
 
-      // Update the post with the new data
-      if (post) {
-        post.title = title;
-        post.content = content;
-        await post.save();
+      // Update the project with the new data
+      if (project && project.user_id === req.userId) {
+        project.name = name;
+        project.description = description;
+        project.needed_funding = needed_funding;
+        await project.save();
 
-        res.status(200).json(post);
+        res.status(200).json(project);
       } else {
-        res.status(404).json({ error: 'Post not found' });
+        res.status(404).json({ error: 'Project not found' });
       }
     } catch (err) {
       res.status(500).json({ error: 'Internal Server Error' });
@@ -52,19 +61,20 @@ module.exports = {
 
   deletePost: async (req, res) => {
     try {
-      // Find the post by its ID in the database
-      const postId = req.params.postId;
-      const post = await Post.findByPk(postId);
+      // Find the project by its ID in the database
+      const projectId = req.params.projectId;
+      const project = await Project.findByPk(projectId);
 
-      // Delete the post from the database
-      if (post) {
-        await post.destroy();
+      // Delete the project from the database
+      if (project && project.user_id === req.userId) {
+        await project.destroy();
         res.status(204).end();
       } else {
-        res.status(404).json({ error: 'Post not found' });
+        res.status(404).json({ error: 'Project not found' });
       }
     } catch (err) {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   },
 };
+

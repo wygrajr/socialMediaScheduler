@@ -1,0 +1,108 @@
+<header id="headTop">
+        <div id="logoTitle">
+            <img id="logo" src="assets/images/logo.png">
+            <h1>Social Scheduler</h1>
+        </div>
+    </header>
+
+    <div id="scheduler">
+        <aside id="input">
+            <form id="search-form">
+                <label for="input-type">Post</label>
+                <textarea class="textarea" placeholder="Type post here..."></textarea>
+                <br>
+                <label for="input-type">Platform</label>
+                <select id="input-type">
+                    <option value="Other" disabled selected>Select Social</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="Instagram" disabled>Instagram</option>
+                    <option value="Threads" disabled>Threads</option>
+                    <option value="Facebook" disabled>Facebook</option>
+                    <option value="Linkedin" disabled>Linkedin</option>
+                </select><br>
+                <label for="frequency">Schedule</label>
+                <br>
+                <select id="frequency">
+                    <option value="" disabled selected>Frequency</option>
+                    <option value="daily" disabled>Daily</option>
+                    <option value="everyOtherDay" disabled>Every other day</option>
+                    <option value="weekly" disabled>Weekly</option>
+                </select>
+                <br>
+                <label for="select-end">End Schedule</label>
+                <br>
+                <select id="select-end">
+                    <option value="" disabled selected>Select Date</option>
+                    <option value="30" disabled>30</option>
+                </select>
+                <button id="inputButton">Post</button>
+            </form>
+            <div id="spacer"></div>
+        </aside>
+        <main id="handles">
+            <nav id="main-nav">
+                <button id="all" value="all">
+                    All
+                </button>
+                <button id="twitter" value='twitter'>
+                    Twitter
+                    <!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+                </button>
+                <button id="instagram" value="instagram">
+                    Instagram
+                </button>
+                <button id="threads" value="threads">
+                    Threads
+                </button>
+                <button id="facebook" value="facebook">
+                    Facebook
+                </button>
+            </nav>
+            
+            <div id="workflow">
+                <div id="timeslots">
+                    <div class="scrollable-container" id="twitterPop">
+                    </div>
+                    <!-- <div class="spacer"></div> -->
+                    <br>
+                    
+                    <div class="columns">
+                        <div class="column1">
+                          <p class="bd-notification">Previous Posts</p>
+                          <div class="columns is-mobile">
+                            <div class="column">
+                              <p class="bd-notification"></p>
+                            </div>
+                            <div class="column">
+                              <p class="bd-notification"></p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="column2">
+                          <p class="bd-notification is-danger">Future Posts</p>
+                          <div class="columns is-mobile">
+                            <div class="column is-half">
+                              <p class="bd-notification"></p>
+                            </div>
+                            <div class="column">
+                              <p class="bd-notification"></p>
+                            </div>
+                            <div class="column">
+                              <p class="bd-notification"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+        
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script 
+    src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"
+    ></script>
+    <img style="display: inline-block none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="" id="icon">
+    <script src="./assets/script.js"></script>

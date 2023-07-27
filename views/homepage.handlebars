@@ -1,10 +1,22 @@
-{{ main-layout}}
+<!DOCTYPE html>
+<html>
 
+<head>
+  <title>SS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="icon" href="assets/images/logo.png" type="image/icon type">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto+Condensed&display=swap"
+    rel="stylesheet">
+</head>
 
-  <h1>Welcome to our Social Media Scheduler!</h1>
-  <p>Create an account to start scheduling and managing your social media posts.</p>
-  <div class="buttons">
-    <a href="views/register" class="btn">Sign Up</a>
-    <a href="/login" class="btn btn-secondary">Login</a>
-  </div>
+<body>
+  {{> header}}
 
+  {{> content}}
+</body>
+
+</html>

@@ -39,7 +39,7 @@ const authController = {
 
             req.session.logged_in = true;
 
-            res.redirect('/Welcome', )
+            res.redirect('/', )
         } catch (err) {
             console.error('Error registering user:', err);
             return res.status(500).json({ error: 'Server error' });
