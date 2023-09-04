@@ -19,7 +19,7 @@ This is a social media scheduler that allows you to pick your platform, set a da
 
 ## 2. Web Address
 
-file:///C:/Users/Yato/Documents/bootcamp/socialMediaScheduler-main/andrew/workflow.html
+https://g10social-scheduler-b2be5bf8ce8c.herokuapp.com/login
 
 <a name="repoadd"></a>
 
