@@ -30,9 +30,8 @@ https://github.com/wygrajr/socialMediaScheduler
 ## 4. Credits
 
 Collaborators:
- - https://github.com/patricketienne777
- - https://github.com/ptookey
- - https://github.com/Tehila03
+ - https://github.com/jony277
+ - https://github.com/LatrellPage
  - https://github.com/Nettooffnook
  - https://github.com/andyalvarez11
  - https://github.com/wygrajr
